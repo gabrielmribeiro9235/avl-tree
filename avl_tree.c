@@ -51,3 +51,21 @@ void destroy_tree(t_tree *tree) {
 int is_empty(t_tree *tree) {
     return tree == NULL || tree->root == NULL;
 }
+
+static int recursive_insert(t_node *root, t_node *new_node) {
+    if (root->item == new_node->item) {
+        return 0;
+    }
+
+    if (root == NULL) {
+        root = new_node;
+        new_node->height++;
+        return 1;
+    }
+
+    if (new_node->item < root->item) {
+        return recursive_insert(root->left, new_node);
+    }
+
+    return recursive_insert(root->right, new_node);
+}
