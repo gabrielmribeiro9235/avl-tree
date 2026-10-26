@@ -60,6 +60,10 @@ int height(t_node *node) {
     return node->height;
 }
 
+static int get_balance(t_node *node) {
+    return height(node->right) - height(node->left);
+}
+
 static int recursive_insert(t_node *root, t_node *new_node) {
     if (root->item == new_node->item) {
         return 0;
