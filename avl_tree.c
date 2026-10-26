@@ -38,3 +38,12 @@ static void recursive_destroy_tree(t_node *root) {
     recursive_destroy_tree(root->right);
     free(root);
 }
+
+void destroy_tree(t_tree *tree) {
+    if (tree == NULL) {
+        return;
+    }
+
+    recursive_destroy_tree(tree->root);
+    free(tree);
+}
