@@ -154,3 +154,21 @@ static t_node* recursive_insert(t_node *root, t_node *new_node) {
 
     return root;
 }
+
+int insert(t_tree *tree, int item) {
+    t_node *node = create_node(item);
+
+    if (node == NULL) {
+        return 0;
+    }
+
+    t_node *new_root = recursive_insert(tree->root, node);
+
+    if (new_root == NULL) {
+        return 0;
+    }
+
+    tree->root = new_root;
+
+    return 1;
+}
