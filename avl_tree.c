@@ -102,6 +102,10 @@ static t_node *rotate_left_right(t_node *node) {
     return rotate_right(node);
 }
 
+static int max(int a, int b) {
+    return a > b ? a : b;
+}
+
 static int recursive_insert(t_node *root, t_node *new_node) {
     if (root->item == new_node->item) {
         return 0;
