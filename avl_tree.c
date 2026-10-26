@@ -52,6 +52,14 @@ int is_empty(t_tree *tree) {
     return tree == NULL || tree->root == NULL;
 }
 
+int height(t_node *node) {
+    if (node == NULL) {
+        return 0;
+    }
+
+    return node->height;
+}
+
 static int recursive_insert(t_node *root, t_node *new_node) {
     if (root->item == new_node->item) {
         return 0;
