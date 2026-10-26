@@ -64,6 +64,15 @@ static int get_balance(t_node *node) {
     return height(node->right) - height(node->left);
 }
 
+static t_node *rotate_left(t_node *node) {
+    t_node *right = node->right;
+
+    node->right = right->left;
+    right->left = node;
+
+    return right;
+}
+
 static int recursive_insert(t_node *root, t_node *new_node) {
     if (root->item == new_node->item) {
         return 0;
