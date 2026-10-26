@@ -73,6 +73,16 @@ static t_node *rotate_left(t_node *node) {
     return right;
 }
 
+static t_node *rotate_right_left(t_node *node) {
+    t_node *right = node->right;
+
+    node->right = right->left;
+    right->left = node->right->right;
+    node->right->right = right;
+
+    return rotate_left(node);
+}
+
 static int recursive_insert(t_node *root, t_node *new_node) {
     if (root->item == new_node->item) {
         return 0;
