@@ -106,20 +106,51 @@ static int max(int a, int b) {
     return a > b ? a : b;
 }
 
-static int recursive_insert(t_node *root, t_node *new_node) {
-    if (root->item == new_node->item) {
-        return 0;
-    }
-
+static t_node* recursive_insert(t_node *root, t_node *new_node) {
     if (root == NULL) {
         root = new_node;
         new_node->height++;
-        return 1;
+        return root;
     }
 
-    if (new_node->item < root->item) {
-        return recursive_insert(root->left, new_node);
+    if (root->item == new_node->item) {
+        return NULL;
+    } else if (new_node->item < root->item) {
+        t_node *left = recursive_insert(root->left, new_node);
+
+        if (left == NULL) {
+            return NULL;
+        }
+
+        root->left = left;
+    } else {
+        t_node *right = recursive_insert(root->right, new_node);
+
+        if (right == NULL) {
+            return NULL;
+        }
+
+        root->right = right;
     }
 
-    return recursive_insert(root->right, new_node);
+    root->height = max(height(root->left), height(root->right)) + 1;
+    int balance = get_balance(root);
+
+    if (balance > 1) {
+        int right_balance = get_balance(root->right);
+        if (right_balance > 0) {
+            root = rotate_left(root);
+        } else {
+            root = rotate_right_left(root);
+        }
+    } else if (balance < -1) {
+        int left_balance = get_balance(root->left);
+        if (left_balance < 0) {
+            root = rotate_right(root);
+        } else {
+            root = rotate_left_right(root);
+        }
+    }
+
+    return root;
 }
