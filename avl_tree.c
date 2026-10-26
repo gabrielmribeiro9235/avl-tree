@@ -28,3 +28,13 @@ t_node* create_node(int item) {
 
     return node;
 }
+
+static void recursive_destroy_tree(t_node *root) {
+    if (root == NULL) {
+        return;
+    }
+
+    recursive_destroy_tree(root->left);
+    recursive_destroy_tree(root->right);
+    free(root);
+}
