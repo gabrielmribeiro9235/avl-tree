@@ -73,6 +73,15 @@ static t_node *rotate_left(t_node *node) {
     return right;
 }
 
+static t_node *rotate_right(t_node *node) {
+    t_node *left = node->left;
+
+    node->left = left->right;
+    left->right = node;
+
+    return left;
+}
+
 static t_node *rotate_right_left(t_node *node) {
     t_node *right = node->right;
 
