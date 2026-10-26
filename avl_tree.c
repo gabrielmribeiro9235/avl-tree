@@ -47,3 +47,7 @@ void destroy_tree(t_tree *tree) {
     recursive_destroy_tree(tree->root);
     free(tree);
 }
+
+int is_empty(t_tree *tree) {
+    return tree == NULL || tree->root == NULL;
+}
