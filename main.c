@@ -53,7 +53,7 @@ int main(){
             }
             case 2:
                 printf("-----------------------------------------------\n");
-                printf("Tree height: %d\n", height(tree));
+                printf("Tree height: %d\n", height(tree->root));
 
                 break;
             case 3:
