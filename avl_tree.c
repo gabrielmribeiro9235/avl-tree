@@ -287,3 +287,13 @@ t_node* search(t_tree *tree, int item) {
 
     return aux;
 }
+
+void pre_order(t_node *node) {
+    if (node == NULL) {
+        return;
+    }
+
+    printf("%d\t", node->item);
+    pre_order(node->left);
+    pre_order(node->right);
+}
