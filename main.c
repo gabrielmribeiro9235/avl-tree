@@ -20,6 +20,43 @@ void menu() {
 }
 
 int main(){
+    t_tree *tree = create_tree();
+
+    if (tree == NULL) {
+        printf("Failed to create the tree\nAborting...\n");
+        return 1;
+    }
+
+    int opt = 0;
+    do {
+        menu();
+        scanf("%d", &opt);
+
+        switch (opt) {
+            case 1: {
+                printf("-----------------------------------------------\n");
+
+                int item;
+
+                printf("Enter the value to be inserted: ");
+                scanf("%d", &item); 
+                
+                int insert_status = insert(tree, item);
+
+                if (insert_status) {
+                    printf("\n%d inserted successfully\n");
+                } else {
+                    printf("\nFailed to insert\n");
+                }
+
+                break;
+            }
+            default:
+                break;
+        }
+    } while (opt != 11);
+
+    destroy_tree(tree);
 
     return 0;
 }
