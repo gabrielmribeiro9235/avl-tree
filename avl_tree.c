@@ -317,3 +317,41 @@ void post_order(t_node *node) {
     post_order(node->right);
     printf("%d\t", node->item);
 }
+
+void width_traversal(t_tree *tree) {
+    if (is_empty(tree)) {
+        return;
+    }
+
+    int tree_size = total_nodes(tree->root);
+    int queue_size = (tree_size + 1) / 2;
+    t_node **queue = malloc(sizeof(t_node*) * queue_size);
+
+    if (queue == NULL) {
+        return;
+    }
+
+    int start = 0;
+    int end = 0;
+
+    queue[end] = tree->root;
+
+    for (int i = 0; i < tree_size; i++) {
+        t_node *current = queue[start];
+        start = (start + 1) % queue_size;
+
+        printf("%d\t", current->item);
+
+        if (current->left != NULL) {
+            end = (end + 1) % queue_size;
+            queue[end] = current->left;
+        }
+
+        if (current->right != NULL) {
+            end = (end + 1) % queue_size;
+            queue[end++] = current->right;
+        }
+    }
+
+    free(queue);
+}
