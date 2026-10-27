@@ -144,6 +144,7 @@ int main(){
                 printf("-----------------------------------------------\n");
 
                 width_traversal(tree);
+                printf("\n");
 
                 break;
             case 11:
