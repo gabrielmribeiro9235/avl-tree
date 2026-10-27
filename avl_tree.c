@@ -60,6 +60,10 @@ int height(t_node *node) {
     return node->height;
 }
 
+static void update_height(t_node *node) {
+    node->height = max(height(node->left), height(node->right)) + 1;
+}
+
 static int get_balance(t_node *node) {
     return height(node->right) - height(node->left);
 }
