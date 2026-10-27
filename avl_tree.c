@@ -261,3 +261,11 @@ int remove(t_tree *tree, int item) {
 
     return 1;
 }
+
+int total_nodes(t_tree* tree) {
+    if (is_empty(tree)) {
+        return 0;
+    }
+
+    return total_nodes_recursive(tree->root);
+}
