@@ -133,6 +133,13 @@ int main(){
                 printf("\n");
 
                 break;
+            case 9:
+                printf("-----------------------------------------------\n");
+
+                post_order(tree->root);
+                printf("\n");
+
+                break;
             default:
                 break;
         }
