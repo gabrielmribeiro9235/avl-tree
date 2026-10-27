@@ -51,6 +51,11 @@ int main(){
 
                 break;
             }
+            case 2:
+                printf("-----------------------------------------------\n");
+                printf("Tree height: %d\n", height(tree));
+
+                break;
             default:
                 break;
         }
