@@ -15,7 +15,7 @@ t_node* create_node(int);
 void destroy_tree(t_tree*);
 int is_empty(t_tree*);
 int insert(t_tree*, int);
-int remove(t_tree*, int);
+int remove_node(t_tree*, int);
 int height(t_node*);
 int total_nodes(t_tree*);
 t_node* search(t_tree*, int);

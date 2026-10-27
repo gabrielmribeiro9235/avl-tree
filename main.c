@@ -8,7 +8,7 @@ void menu() {
     printf(" 2 - height\n");
     printf(" 3 - total_nodes\n");
     printf(" 4 - search\n");
-    printf(" 5 - remove\n");
+    printf(" 5 - remove_node\n");
     printf(" 6 - is_empty\n");
     printf(" 7 - pre_order\n");
     printf(" 8 - in_order\n");
@@ -99,7 +99,7 @@ int main(){
                 printf("Insert the value of the node you want\nto remove: ");
                 scanf("%d", &item);
 
-                int remove_status = remove(tree, item);
+                int remove_status = remove_node(tree, item);
 
                 if (remove_status) {
                     printf("\n%d successfully removed\n", item);

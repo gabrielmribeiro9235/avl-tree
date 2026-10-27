@@ -246,7 +246,7 @@ static int total_nodes_recursive(t_node *node){
     return 1 + total_nodes_recursive(node->left) + total_nodes_recursive(node->right);
 }
 
-int remove(t_tree *tree, int item) {
+int remove_node(t_tree *tree, int item) {
     if (is_empty(tree)) {
         return 0;
     }
