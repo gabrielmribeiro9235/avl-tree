@@ -173,12 +173,12 @@ int insert(t_tree *tree, int item) {
     return 1;
 }
 
-static t_node* recursive_remove(t_node *node, int item) {
+static t_node* recursive_remove(t_node *node, t_node *node_to_remove) {
     if (node == NULL) {
         return NULL;
     }
 
-    if (node->item == item) {
+    if (node->item == node_to_remove->item) {
         if (node->right == NULL && node->left == NULL) {
             free(node);
             return NULL;
@@ -210,10 +210,10 @@ static t_node* recursive_remove(t_node *node, int item) {
 
             return node;
         }
-    } else if (item < node->item) {
-        node->left = recursive_remove(node->left, item);
+    } else if (node_to_remove->item < node->item) {
+        node->left = recursive_remove(node->left, node_to_remove);
     } else {
-        node->right = recursive_remove(node->right, item);
+        node->right = recursive_remove(node->right, node_to_remove);
     }
 
     node->height = max(height(node->left), height(node->right)) + 1;
@@ -251,13 +251,13 @@ int remove(t_tree *tree, int item) {
         return 0;
     }
 
-    t_node *new_root = recursive_remove(tree->root, item);
+    t_node *node_to_remove = search(tree, item);
 
-    if (total_nodes_recursive(new_root) == total_nodes_recursive(tree->root)) {
+    if (node_to_remove == NULL) {
         return 0;
     }
 
-    tree->root = new_root;
+    tree->root = recursive_remove(tree->root, node_to_remove);
 
     return 1;
 }
