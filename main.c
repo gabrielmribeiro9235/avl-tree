@@ -126,6 +126,13 @@ int main(){
                 printf("\n");
 
                 break;
+            case 8:
+                printf("-----------------------------------------------\n");
+
+                in_order(tree->root);
+                printf("\n");
+
+                break;
             default:
                 break;
         }
