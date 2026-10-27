@@ -109,6 +109,16 @@ int main(){
 
                 break;
             }
+            case 6:
+                printf("-----------------------------------------------\n");
+                
+                if (is_empty(tree)) {
+                    printf("The tree is empty\n");
+                } else {
+                    printf("The tree is not empty\n");
+                }
+
+                break;
             default:
                 break;
         }
