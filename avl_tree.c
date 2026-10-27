@@ -74,6 +74,9 @@ static t_node *rotate_left(t_node *node) {
     node->right = right->left;
     right->left = node;
 
+    update_height(node);
+    update_height(right);
+
     return right;
 }
 
@@ -82,6 +85,9 @@ static t_node *rotate_right(t_node *node) {
 
     node->left = left->right;
     left->right = node;
+
+    update_height(node);
+    update_height(left);
 
     return left;
 }
