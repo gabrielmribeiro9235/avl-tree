@@ -172,3 +172,68 @@ int insert(t_tree *tree, int item) {
 
     return 1;
 }
+
+static t_node* recursive_remove(t_node *node, int item) {
+    if (node == NULL) {
+        return NULL;
+    }
+
+    if (node->item == item) {
+        if (node->right == NULL && node->left == NULL) {
+            free(node);
+            return NULL;
+        } else if (node->right == NULL && node->left != NULL) {
+            t_node *left = node->left;
+
+            free(node);
+
+            return left;
+        } else if (node->right != NULL && node->left == NULL) {
+            t_node *right = node->right;
+
+            free(node);
+
+            return right;
+        } else {
+            t_node **aux = &(node->left);
+
+            while ((*aux)->right != NULL) {
+                aux = &((*aux)->right);
+            }
+
+            t_node *biggest_left = *aux;
+            *aux = biggest_left->left;
+
+            node->item = biggest_left->item;
+
+            free(biggest_left);
+
+            return node;
+        }
+    } else if (item < node->item) {
+        node->left = recursive_remove(node->left, item);
+    } else {
+        node->right = recursive_remove(node->right, item);
+    }
+
+    node->height = max(height(node->left), height(node->right)) + 1;
+    int balance = get_balance(node);
+
+    if (balance > 1) {
+        int right_balance = get_balance(node->right);
+        if (right_balance > 0) {
+            node = rotate_left(node);
+        } else {
+            node = rotate_right_left(node);
+        }
+    } else if (balance < -1) {
+        int left_balance = get_balance(node->left);
+        if (left_balance < 0) {
+            node = rotate_right(node);
+        } else {
+            node = rotate_left_right(node);
+        }
+    }
+
+    return node;
+}
