@@ -297,3 +297,13 @@ void pre_order(t_node *node) {
     pre_order(node->left);
     pre_order(node->right);
 }
+
+void in_order(t_node *node) {
+    if (node == NULL) {
+        return;
+    }
+
+    in_order(node->left);
+    printf("%d\t", node->item);
+    in_order(node->right);
+}
