@@ -60,6 +60,10 @@ int height(t_node *node) {
     return node->height;
 }
 
+static int max(int a, int b) {
+    return a > b ? a : b;
+}
+
 static void update_height(t_node *node) {
     node->height = max(height(node->left), height(node->right)) + 1;
 }
@@ -100,10 +104,6 @@ static t_node *rotate_right_left(t_node *node) {
 static t_node *rotate_left_right(t_node *node) {
     node->left = rotate_left(node->left);
     return rotate_right(node);
-}
-
-static int max(int a, int b) {
-    return a > b ? a : b;
 }
 
 static t_node* recursive_insert(t_node *root, t_node *new_node) {
