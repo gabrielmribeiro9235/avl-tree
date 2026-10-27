@@ -307,3 +307,13 @@ void in_order(t_node *node) {
     printf("%d\t", node->item);
     in_order(node->right);
 }
+
+void post_order(t_node *node) {
+    if (node == NULL) {
+        return;
+    }
+
+    post_order(node->left);
+    post_order(node->right);
+    printf("%d\t", node->item);
+}
