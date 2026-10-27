@@ -237,3 +237,19 @@ static t_node* recursive_remove(t_node *node, int item) {
 
     return node;
 }
+
+int remove(t_tree *tree, int item) {
+    if (is_empty(tree)) {
+        return 0;
+    }
+
+    t_node *new_root = recursive_remove(tree->root, item);
+
+    if (total_nodes_recursive(new_root) == total_nodes_recursive(tree->root)) {
+        return 0;
+    }
+
+    tree->root = new_root;
+
+    return 1;
+}
