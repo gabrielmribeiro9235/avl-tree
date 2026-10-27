@@ -56,6 +56,11 @@ int main(){
                 printf("Tree height: %d\n", height(tree));
 
                 break;
+            case 3:
+                printf("-----------------------------------------------\n");
+                printf("Total number of nodes in the tree: %d\n", total_nodes(tree));
+
+                break;
             default:
                 break;
         }
