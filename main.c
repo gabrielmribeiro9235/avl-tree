@@ -61,6 +61,36 @@ int main(){
                 printf("Total number of nodes in the tree: %d\n", total_nodes(tree));
 
                 break;
+            case 4: {
+                printf("-----------------------------------------------\n");
+
+                int item;
+
+                printf("Insert the value of the node you want\nto search for: ");
+                scanf("%d", &item);
+
+                t_node *node = search(tree->root, item);
+
+                if (node != NULL) {
+                    printf("\nNode:\n");
+                    printf("\t%d\n", node->item);
+                    if (node->left == NULL) {
+                        printf("NULL\t\t");
+                    } else {
+                        printf("%d\t\t", node->left->item);
+                    }
+
+                    if (node->right == NULL) {
+                        printf("NULL\n");
+                    } else {
+                        printf("%d\n", node->right->item);
+                    }
+                } else {
+                    printf("\n%d IS NOT in the tree\n", item);
+                }
+
+                break;
+            }
             default:
                 break;
         }
