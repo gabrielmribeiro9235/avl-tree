@@ -108,9 +108,8 @@ static int max(int a, int b) {
 
 static t_node* recursive_insert(t_node *root, t_node *new_node) {
     if (root == NULL) {
-        root = new_node;
-        new_node->height++;
-        return root;
+        new_node->height = 1;
+        return new_node;
     }
 
     if (root->item == new_node->item) {
@@ -133,7 +132,7 @@ static t_node* recursive_insert(t_node *root, t_node *new_node) {
         root->right = right;
     }
 
-    root->height = max(height(root->left), height(root->right)) + 1;
+    update_height(root);
     int balance = get_balance(root);
 
     if (balance > 1) {
