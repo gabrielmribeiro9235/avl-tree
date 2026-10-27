@@ -146,12 +146,24 @@ int main(){
                 width_traversal(tree);
 
                 break;
+            case 11:
+                printf("-----------------------------------------------\n");
+                printf("Leaving the program\n");
+                break;
             default:
+                printf("-----------------------------------------------\n");
+                printf("Invalid choice\n");
                 break;
         }
     } while (opt != 11);
 
+    printf("-----------------------------------------------\n");
+    printf("Freeing up memory\n");
+
     destroy_tree(tree);
+
+    printf("-----------------------------------------------\n");
+    printf("End of the program\n");
 
     return 0;
 }
