@@ -269,3 +269,21 @@ int total_nodes(t_tree* tree) {
 
     return total_nodes_recursive(tree->root);
 }
+
+t_node* search(t_tree *tree, int item) {
+    if (is_empty(tree)) {
+        return NULL;
+    }
+
+    t_node *aux = tree->root;
+
+    while (aux != NULL && aux->item != item) {
+        if (item < aux->item) {
+            aux = aux->left;
+        } else {
+            aux = aux->right;
+        }
+    }
+
+    return aux;
+}
